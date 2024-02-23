@@ -1,0 +1,1 @@
+C:\Users\n.campa\Desktop\LoginEnterpriseAutomation\CLI\Connection\Configuration.ps1 -fqdn "demolab.loginvsi.com" -token "GuxK2MHmD5FqxYDWQTxd1HJATZ79rPbURMQQPxF2TFE"
