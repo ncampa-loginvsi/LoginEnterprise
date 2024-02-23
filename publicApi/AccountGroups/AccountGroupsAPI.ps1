@@ -78,5 +78,3 @@ function VSI-GetAccountGroup {
     $Response
 }
 
-# $accountGroups = (VSI-GetAccountGroups -count 1)
-(VSI-GetAccountGroup -groupId "d4705c75-a5a7-4db1-a8f0-a3852f31028a").Count

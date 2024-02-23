@@ -46,12 +46,10 @@ function VSI-GetTestRuns {
     $Response.items
 }
 
-
 # KW Baseline
-$testRuns = VSI-GetTestRuns -testId "b0a25ad2-70c6-4146-a7a3-a1676e68668c"
+# $testRuns = VSI-GetTestRuns -testId "b0a25ad2-70c6-4146-a7a3-a1676e68668c"
 
-
-Write-Host "Last results"
-$example = $testRuns[-1]
-$example.euxScore.score
-$example.vsiMax.maxSessions
+# Write-Host "Last results"
+# $example = $testRuns[-1]
+# $example.euxScore.score
+# $example.vsiMax.maxSessions

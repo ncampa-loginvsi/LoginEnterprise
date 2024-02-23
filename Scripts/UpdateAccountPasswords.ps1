@@ -9,8 +9,14 @@ Param(
     $Count = "1000"
 )
 
-$global:fqdn = $Fqdn
-$global:token = $Token 
+# If you use ConnectionHarness to set your global variables, then you do not need to specify here.
+# $global:FQDN = ""
+# $global:TOKEN = ""
+
+# $global:HEADER = @{
+#     "Accept" = "application/json"
+#     "Authorization" = "Bearer $global:TOKEN"
+# }
 
 $Code = @"
 public class SSLHandler
@@ -48,7 +54,7 @@ function Get-LeAccounts {
     } 
 
     $Parameters = @{
-        Uri         = "https://" + $global:Fqdn + "/publicApi/v5/accounts"
+        Uri         = "https://" + $global:Fqdn + "/publicApi/v6/accounts"
         Headers     = $Header
         Method      = "GET"
         body        = $Body
@@ -86,7 +92,7 @@ function Set-LeAccount {
     } | ConvertTo-Json
 
     $Parameters = @{
-        Uri         = "https://" + $global:Fqdn + "/publicApi/v5/accounts" + "/$AccountId"
+        Uri         = "https://" + $global:Fqdn + "/publicApi/v6/accounts" + "/$AccountId"
         Headers     = $Header
         Method      = "PUT"
         body        = $Body

@@ -75,5 +75,5 @@ function VSI-GetUserSession {
     $Response
 }
 
-VSI-GetUserSessions -testRunID "91e8f820-86c7-4221-bed8-4e4976103b22"
+# VSI-GetUserSessions -testRunID "91e8f820-86c7-4221-bed8-4e4976103b22"
 # VSI-GetUserSession -testRunID "91e8f820-86c7-4221-bed8-4e4976103b22" -userSessionID "3bd1d095-792f-4d87-a073-af01f0f714a1" -include "properties"

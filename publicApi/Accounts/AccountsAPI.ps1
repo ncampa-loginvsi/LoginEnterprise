@@ -331,26 +331,3 @@ function VSI-EnableDisableAccount {
     $Response = Invoke-RestMethod @Parameters
     $Response
 }
-
-
-
-# $accountId = VSI-NewAccount -username "login9999" -domain "contoso.org" -email "login9999@contoso.org" -password "Password!" -customFields $customFields
-# $accountId
-# $Results = VSI-RemoveAccount -accountId $accountId
-
-
-# $accountIds = VSI-NewBulkAccounts -baseUsername "aaaaa" -numberOfDigits "1" -numberOfAccounts "2" -domain "contoso.org" -password "dummy123" -email "aaaaa@contoso.org"
-# $accountIds = @(
-#     "977428d4-9b6c-4d60-ba5f-5580afb891f5",
-#     "39012865-1c21-4b05-8b86-1a3936692176"
-# )
-# VSI-RemoveBulkAccounts -accountIds $accountIds
-
-# VSI-GetAccounts -orderBy "username" -direction "asc" -count "100" -include "none"
-
-# VSI-GetAccount -accountId "96eb6316-43e3-405e-be96-2a6e6355205a"
-
-# VSI-SetAccount -accountId "55127bf3-61f0-47bf-b5ad-a7d680a845e2" -username "testUserChanged" -domain "contoso.org" -email "testUser@contoso.org" -password "Dummy"
-
-# $Response = VSI-EnableDisableAccount -accountId $accountId -toggle "true"
-# ($Response -eq "")

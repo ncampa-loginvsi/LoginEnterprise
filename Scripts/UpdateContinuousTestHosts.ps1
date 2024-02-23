@@ -5,16 +5,22 @@ Param(
     $PathToCsv = "YOUR_PATH_TO_HOSTLIST_CSV"
 )
 
-$global:Fqdn = $Fqdn
-$global:Token = $Token 
+# If you use ConnectionHarness to set your global variables, then you do not need to specify here.
+# $global:FQDN = ""
+# $global:TOKEN = ""
 
-$code = @"
+# $global:HEADER = @{
+#     "Accept" = "application/json"
+#     "Authorization" = "Bearer $global:TOKEN"
+# }
+
+$Code = @"
 public class SSLHandler
 {public static System.Net.Security.RemoteCertificateValidationCallback GetSSLHandler()
     {return new System.Net.Security.RemoteCertificateValidationCallback((sender, certificate, chain, policyErrors) => { return true; });}
 }
 "@
-Add-Type -TypeDefinition $code
+Add-Type -TypeDefinition $Code
 
 # Query for existing accounts
 function Get-LeTest {

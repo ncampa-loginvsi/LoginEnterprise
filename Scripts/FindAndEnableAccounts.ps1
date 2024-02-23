@@ -2,25 +2,23 @@
 #                                             Find and Enable Disabled Accounts
 # ------------------------------------------------------------------------------------------------
 
+# If you use ConnectionHarness to set your global variables, then you do not need to specify here.
+# $global:FQDN = ""
+# $global:TOKEN = ""
 
-$global:FQDN = ""
-$global:TOKEN = ""
+# $global:HEADER = @{
+#     "Accept" = "application/json"
+#     "Authorization" = "Bearer $global:TOKEN"
+# }
 
-$global:HEADER = @{
-    "Accept" = "application/json"
-    "Authorization" = "Bearer $global:TOKEN"
-}
-
-$SSLHandler = @"
+$Code = @"
 public class SSLHandler
 {public static System.Net.Security.RemoteCertificateValidationCallback GetSSLHandler()
     {return new System.Net.Security.RemoteCertificateValidationCallback((sender, certificate, chain, policyErrors) => { return true; });}
 }
 "@
+Add-Type -TypeDefinition $Code
 
-Add-Type -TypeDefinition $SSLHandler
-
-# Query for existing accounts
 # Query for existing accounts
 function VSI-GetAccounts {
     Param (
@@ -35,8 +33,6 @@ function VSI-GetAccounts {
     # WARNING: ignoring SSL/TLS certificate errors is a security risk
     [System.Net.ServicePointManager]::ServerCertificateValidationCallback = [SSLHandler]::GetSSLHandler()
 
-    $Header = $global:HEADER
-
     $Body = @{
         orderBy   = $orderBy
         direction = $direction
@@ -45,8 +41,8 @@ function VSI-GetAccounts {
     }
 
     $Parameters = @{
-        Uri         = "https://" + $global:FQDN + "/publicApi/v5/accounts"
-        Headers     = $Header
+        Uri         = "https://" + $global:FQDN + "/publicApi/v6/accounts"
+        Headers     = $global:HEADER
         Method      = "GET"
         body        = $Body
         ContentType = "application/json"
@@ -69,13 +65,11 @@ function VSI-EnableDisableAccount {
     # WARNING: ignoring SSL/TLS certificate errors is a security risk
     [System.Net.ServicePointManager]::ServerCertificateValidationCallback = [SSLHandler]::GetSSLHandler()
 
-    $Header = $global:HEADER
-
     $Body = $toggle
 
     $Parameters = @{
-        Uri         = "https://" + $global:FQDN + "/publicApi/v5/accounts/" + $accountId + "/enabled"
-        Headers     = $Header
+        Uri         = "https://" + $global:FQDN + "/publicApi/v6/accounts/" + $accountId + "/enabled"
+        Headers     = $global:HEADER
         Method      = "PUT"
         body        = $Body
         ContentType = "application/json"
