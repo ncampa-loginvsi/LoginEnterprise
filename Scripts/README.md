@@ -1,4 +1,4 @@
-## AccountManagement.ps1 (Supported API versions: v5)
+## AccountManagement.ps1
 
 This script can be used to edit account passwords after creating them in bulk. You might have accounts LoginEnt0001, ..., LoginEnt1000. Because bulk creation does not currently allow for unique passwords, it may seem tidious to manually edit each account, certainly as the number of accounts increases. 
 
